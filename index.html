@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+        margin: 0;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+      }
+      button {
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+    <h1>تسجيل الدخول</h1>
+    <form id="login-form">
+        <label for="username">اسم المستخدم:</label>
+        <input type="text" id="username" required>
+        <button type="submit">تسجيل الدخول</button>
+    </form>
+
+    <script>
+      document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        if (username.trim() !== '') {
+          // Generate a random color for the user
+          const randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+          
+          // Store username and color in localStorage
+          localStorage.setItem('username', username);
+          localStorage.setItem('userColor', randomColor);
+          
+          // Redirect to chat page
+          window.location.href = 'chat.html';
+        }
+      });
+    </script>
+
+</body></html>
